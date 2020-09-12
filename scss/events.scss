@@ -1,4 +1,4 @@
-$shadow-default: 0px 16px 32px rgba(0, 0, 0, 0.5);
+$shadow-default: 0px 12px 22px rgba(0, 0, 0, 0.5);
 
 * {
     margin: 0;
@@ -19,6 +19,13 @@ body {
     margin-right: auto;
 }
 
+@mixin center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Страница со всем контентом
 .page {
     width: 45%;
     height: auto;
@@ -32,11 +39,13 @@ body {
     border-radius: 16px;
     box-shadow: $shadow-default;
 
-    h2 {
+    // Основной заголовок
+    > h2 {
         font-weight: 800;
         color: #2E282C;
     }
 
+    // Блок с фильтрами городов и месяцев
     .filters {
         display: flex;
         align-items: center;
@@ -45,6 +54,7 @@ body {
 
         margin-top: 2%;
 
+        // Фильтры
         select {
             width: 10vw;
             font-size: 1em;
@@ -57,17 +67,18 @@ body {
         }
     }
 
+    // Контейнер с карточками
     .container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 15vw;
+        grid-auto-rows: 14vw;
         grid-gap: 1vw;
-
         margin-top: 5%;
     }
 
     $card-indent: 5%;
 
+    // Карточки событий
     .card {
         position: relative;
         border-radius: 6px;
@@ -75,20 +86,19 @@ body {
         box-shadow: $shadow-default;
         overflow: hidden;
 
+        // Внутренний блок с днём, сверху слева
         .day-block {
             position: relative;
             top: $card-indent;
             left: $card-indent;
 
-            height: 1.7em;
-            width: 1.7em;
+            height: 1.6em;
+            width: 1.6em;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            @include center-flex();
 
             color: #FFFFFF;
-            font-size: 1.5em;
+            font-size: 1.7em;
             overflow: hidden;
 
             border: 1px solid #FFFFFF;
@@ -100,6 +110,7 @@ body {
             background: rgba(155, 155, 155, 0.5);
         }
 
+        // Закладка, сверху справа
         .white-bookmark {
             color: white;
             position: absolute;
@@ -109,6 +120,7 @@ body {
             cursor: pointer;
         }
 
+        // Название события, снизу слева
         .event-name {
             position: absolute;
             bottom: $card-indent;
@@ -120,5 +132,22 @@ body {
         .event-name:hover {
             text-shadow: 0 0 20px #000000;
         }
+    }
+
+    .more-cards-button {
+        @include center-margin();
+        margin-top: 5%;
+        padding: 2%;
+        width: 35%;
+        
+        background-color: rgb(122, 23, 117);
+        border-radius: 6px;
+        cursor: pointer;
+        
+        @include center-flex();
+        font-size: 1.5em;
+        color: white;
+
+        display: none;
     }
 }

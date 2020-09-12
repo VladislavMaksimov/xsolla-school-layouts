@@ -1,5 +1,6 @@
 const pathEvents = "/data/events.json";
 const pathMonths = "/data/months.json";
+let index = 0;
 
 // При загрузке страницы создаёт карточки
 window.addEventListener('load', () => {
@@ -12,8 +13,14 @@ window.addEventListener('load', () => {
         .then(() => {
             const cities = document.getElementById('cities');
             const months = document.getElementById('months');
+            const moreCardsButton = document.getElementsByClassName('more-cards-button')[0];
+            
             cities.addEventListener('change', () => filter());
             months.addEventListener('change', () => filter());
+            moreCardsButton.addEventListener('click', () => {
+                getEvents()
+                    .then((events) => renderCards(events))
+            });
         })
 })
 
@@ -99,11 +106,20 @@ const fillCities = (events) => {
     })
 }
 
-// Рендерит все карточки
+// Рендерит по 4 карточки
 const renderCards = (events) => {
-    Object.values(events).map((event) => {
-        renderCard(event);
-    })
+    const moreCardsButton = document.getElementsByClassName('more-cards-button')[0];
+    let i;
+
+    for (i = index; i < index + 4; i++) {
+        renderCard(events[i]);
+        if (i >= events.length - 1) {
+            moreCardsButton.style.display = 'none';
+            return;
+        }
+    }
+    moreCardsButton.style.display = 'flex';
+    index = i;
 }
 
 // Полностью очищает контейнер с карточками

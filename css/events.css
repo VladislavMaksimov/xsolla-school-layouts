@@ -23,11 +23,11 @@ body {
   padding: 2%;
   background: #FFFFFF;
   border-radius: 16px;
-  -webkit-box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.5);
-          box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 12px 22px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 12px 22px rgba(0, 0, 0, 0.5);
 }
 
-.page h2 {
+.page > h2 {
   font-weight: 800;
   color: #2E282C;
 }
@@ -61,7 +61,7 @@ body {
   display: grid;
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 15vw;
+  grid-auto-rows: 14vw;
   grid-gap: 1vw;
   margin-top: 5%;
 }
@@ -70,8 +70,8 @@ body {
   position: relative;
   border-radius: 6px;
   background-size: cover;
-  -webkit-box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.5);
-          box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 12px 22px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 12px 22px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
@@ -79,8 +79,8 @@ body {
   position: relative;
   top: 5%;
   left: 5%;
-  height: 1.7em;
-  width: 1.7em;
+  height: 1.6em;
+  width: 1.6em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -91,7 +91,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   color: #FFFFFF;
-  font-size: 1.5em;
+  font-size: 1.7em;
   overflow: hidden;
   border: 1px solid #FFFFFF;
   border-radius: 6px;
@@ -121,4 +121,27 @@ body {
 
 .page .card .event-name:hover {
   text-shadow: 0 0 20px #000000;
+}
+
+.page .more-cards-button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  padding: 2%;
+  width: 35%;
+  background-color: #7a1775;
+  border-radius: 6px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.5em;
+  color: white;
+  display: none;
 }
