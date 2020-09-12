@@ -33,46 +33,6 @@ const getEvents = () => {
         .then(events => { return events; });
 }
 
-// Рендерит одну карточку
-const renderCard = (event) => {
-    const cards = document.getElementsByClassName('container')[0];
-    const card = document.createElement('div');
-    const dayBlock = document.createElement('div');
-    const bookmark = document.createElement("i");
-    const eventName = document.createElement('h2');
-
-    card.className = 'card';
-    card.style.backgroundImage = 'URL(' + event.image + ')';
-    dayBlock.className = 'day-block';
-    dayBlock.innerText = event.date.split('.')[0]; /// !!!!!!!!!!!!!
-    bookmark.classList.add("far", "fa-bookmark", "white-bookmark");
-    eventName.className = 'event-name';
-    eventName.innerText = event.name;
-
-    card.append(dayBlock, eventName, bookmark);
-    cards.appendChild(card);
-}
-
-// Добавляет месяц в множество
-function getMonth(months, date) {
-    const month = Number.parseInt(date.split('.')[1]); // !!!!!!!!!!!!!!!!!!!
-
-    switch (month) {
-        case 1: return months.set(1, "January");
-        case 2: return months.set(2, "February");
-        case 3: return months.set(3, "March");
-        case 4: return months.set(4, "April");
-        case 5: return months.set(5, "May");
-        case 6: return months.set(6, "June");
-        case 7: return months.set(7, "July");
-        case 8: return months.set(8, "August");
-        case 9: return months.set(9, "September");
-        case 10: return months.set(10, "October");
-        case 11: return months.set(11, "November");
-        case 12: return months.set(12, "December");
-    }
-}
-
 // Заполняет селектор с месяцами
 const fillMonths = (events) => {
     const months = new Map();
@@ -89,6 +49,26 @@ const fillMonths = (events) => {
         const monthSelect = document.getElementById('months');
         monthSelect.append(monthOption);
     })
+}
+
+// Добавляет месяц в множество
+function getMonth(months, date) {
+    const month = Number.parseInt(date.split('.')[1]);
+
+    switch (month) {
+        case 1: return months.set(1, "January");
+        case 2: return months.set(2, "February");
+        case 3: return months.set(3, "March");
+        case 4: return months.set(4, "April");
+        case 5: return months.set(5, "May");
+        case 6: return months.set(6, "June");
+        case 7: return months.set(7, "July");
+        case 8: return months.set(8, "August");
+        case 9: return months.set(9, "September");
+        case 10: return months.set(10, "October");
+        case 11: return months.set(11, "November");
+        case 12: return months.set(12, "December");
+    }
 }
 
 // Заполняет селектор с городами
@@ -108,6 +88,10 @@ const fillCities = (events) => {
     })
 }
 
+const saveEvents = (events) => {
+    eventsLocal = events;
+}
+
 // Рендерит по 4 карточки
 const renderCards = () => {
     const moreCardsButton = document.getElementsByClassName('more-cards-button')[0];
@@ -124,11 +108,53 @@ const renderCards = () => {
     index = i;
 }
 
+// Рендерит одну карточку
+const renderCard = (event) => {
+    const cards = document.getElementsByClassName('container')[0];
+    const card = document.createElement('div');
+    const dayBlock = document.createElement('div');
+    const bookmark = document.createElement("i");
+    const eventName = document.createElement('h2');
+
+    card.className = 'card';
+    card.style.backgroundImage = 'URL(' + event.image + ')';
+    dayBlock.className = 'day-block';
+    dayBlock.innerText = event.date.split('.')[0];
+    bookmark.classList.add("far", "fa-bookmark", "white-bookmark");
+    eventName.className = 'event-name';
+    eventName.innerText = event.name;
+
+    card.append(dayBlock, eventName, bookmark);
+    cards.appendChild(card);
+}
+
+// При изменении значений в селектах берёт карточки и прогоняет их через фильтр
+const filter = () => {
+    index = 0;
+    getEvents()
+        .then((events) => { 
+            clearCards();
+            return events;
+        })
+        .then((events) => filterCards(events));
+}
+
 // Полностью очищает контейнер с карточками
 const clearCards = () => {
     const cards = document.getElementsByClassName('container')[0];
     while(cards.firstChild)
         cards.removeChild(cards.firstChild);
+}
+
+// Фильтрует карточки
+const filterCards = (events) => {
+    const eventsFiltered = [];
+    Object.values(events).map((event) => {
+        if (isNeededEvent(event))
+            eventsFiltered.push(event);
+    });
+    saveEvents(eventsFiltered);
+    renderCards();
 }
 
 // Проверяет, проходит ли событие фильтры
@@ -145,30 +171,4 @@ const isNeededEvent = (event) => {
         return false;
 
     return true;
-}
-
-// Фильтрует карточки
-const filterCards = (events) => {
-    const eventsFiltered = [];
-    Object.values(events).map((event) => {
-        if (isNeededEvent(event))
-            eventsFiltered.push(event);
-    });
-    saveEvents(eventsFiltered);
-    renderCards();
-}
-
-// При изменении значений в селектах берёт карточки и прогоняет их через фильтр
-const filter = () => {
-    index = 0;
-    getEvents()
-        .then((events) => { 
-            clearCards();
-            return events;
-        })
-        .then((events) => filterCards(events));
-}
-
-const saveEvents = (events) => {
-    eventsLocal = events;
 }

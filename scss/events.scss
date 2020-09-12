@@ -151,3 +151,85 @@ body {
         display: none;
     }
 }
+
+//// МЕДИАЗАПРОСЫ ////
+
+@media screen and (max-width: 1199px) {
+    .page {
+        width: 60%;
+
+        .filters {
+            max-width: 80%;
+            select {
+                width: 14vw;
+            }
+        }
+
+        .container {
+            grid-auto-rows: 20vw;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .page {
+        width: 90%; 
+
+        .filters {
+            max-width: 80%;
+            select {
+                width: 22vw;
+            }
+        }
+
+        .container {
+            grid-auto-rows: 26vw;
+            grid-gap: 2vw;
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .page {
+        width: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+        margin: 0;
+        box-shadow: none;
+
+        > h2 {
+            @include center-flex();
+            font-size: 2em;
+        }
+
+        .filters {
+            max-width: 100%;
+            width: 100%;
+            display: block;
+            font-size: 1.5em;
+
+            select {
+                width: 100%;
+            }
+        }
+
+        .container {
+            grid-template-columns: auto;
+            grid-auto-rows: 50vw;
+
+            .card {
+                box-shadow: none;
+
+                h2 {
+                    font-size: 2em;
+                }
+            }
+        }
+
+        .more-cards-button {
+            width: 60%;
+            font-size: 2em;
+            height: 2em;
+        }
+    }
+}
