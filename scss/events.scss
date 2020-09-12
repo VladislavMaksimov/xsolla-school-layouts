@@ -35,11 +35,6 @@ body {
     h2 {
         font-weight: 800;
         color: #2E282C;
-        cursor: pointer;
-    }
-
-    h2:hover {
-        text-shadow: 0 0 20px #000000;
     }
 
     .filters {
@@ -111,6 +106,7 @@ body {
             top: $card-indent;
             right: $card-indent;
             font-size: 1.2em;
+            cursor: pointer;
         }
 
         .event-name {
@@ -118,6 +114,11 @@ body {
             bottom: $card-indent;
             left: $card-indent;
             color: #FFFFFF;
+            cursor: pointer;
+        }
+
+        .event-name:hover {
+            text-shadow: 0 0 20px #000000;
         }
     }
 }

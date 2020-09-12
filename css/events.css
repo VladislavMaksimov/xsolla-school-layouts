@@ -30,11 +30,6 @@ body {
 .page h2 {
   font-weight: 800;
   color: #2E282C;
-  cursor: pointer;
-}
-
-.page h2:hover {
-  text-shadow: 0 0 20px #000000;
 }
 
 .page .filters {
@@ -113,6 +108,7 @@ body {
   top: 5%;
   right: 5%;
   font-size: 1.2em;
+  cursor: pointer;
 }
 
 .page .card .event-name {
@@ -120,4 +116,9 @@ body {
   bottom: 5%;
   left: 5%;
   color: #FFFFFF;
+  cursor: pointer;
+}
+
+.page .card .event-name:hover {
+  text-shadow: 0 0 20px #000000;
 }
