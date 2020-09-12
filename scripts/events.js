@@ -1,5 +1,6 @@
 const pathEvents = "/data/events.json";
 const pathMonths = "/data/months.json";
+let eventsLocal;
 let index = 0;
 
 // При загрузке страницы создаёт карточки
@@ -8,8 +9,9 @@ window.addEventListener('load', () => {
         .then(events => {
             fillMonths(events);
             fillCities(events);
-            renderCards(events);
+            saveEvents(events);
         })
+        .then(() => renderCards())
         .then(() => {
             const cities = document.getElementById('cities');
             const months = document.getElementById('months');
@@ -19,7 +21,7 @@ window.addEventListener('load', () => {
             months.addEventListener('change', () => filter());
             moreCardsButton.addEventListener('click', () => {
                 getEvents()
-                    .then((events) => renderCards(events))
+                    .then((events) => filterCards(events))
             });
         })
 })
@@ -107,13 +109,13 @@ const fillCities = (events) => {
 }
 
 // Рендерит по 4 карточки
-const renderCards = (events) => {
+const renderCards = () => {
     const moreCardsButton = document.getElementsByClassName('more-cards-button')[0];
     let i;
 
     for (i = index; i < index + 4; i++) {
-        renderCard(events[i]);
-        if (i >= events.length - 1) {
+        renderCard(eventsLocal[i]);
+        if (i >= eventsLocal.length - 1) {
             moreCardsButton.style.display = 'none';
             return;
         }
@@ -152,15 +154,21 @@ const filterCards = (events) => {
         if (isNeededEvent(event))
             eventsFiltered.push(event);
     });
-    renderCards(eventsFiltered);
+    saveEvents(eventsFiltered);
+    renderCards();
 }
 
 // При изменении значений в селектах берёт карточки и прогоняет их через фильтр
 const filter = () => {
+    index = 0;
     getEvents()
         .then((events) => { 
             clearCards();
             return events;
         })
         .then((events) => filterCards(events));
+}
+
+const saveEvents = (events) => {
+    eventsLocal = events;
 }
