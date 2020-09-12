@@ -1,7 +1,21 @@
-const cities = document.getElementById('cities');
-const months = document.getElementById('months');
 const pathEvents = "/data/events.json";
 const pathMonths = "/data/months.json";
+
+// При загрузке страницы создаёт карточки
+window.addEventListener('load', () => {
+    getEvents()
+        .then(events => {
+            fillMonths(events);
+            fillCities(events);
+            renderCards(events);
+        })
+        .then(() => {
+            const cities = document.getElementById('cities');
+            const months = document.getElementById('months');
+            cities.addEventListener('change', () => filter());
+            months.addEventListener('change', () => filter());
+        })
+})
 
 // Берёт информацию о событиях
 const getEvents = () => {
@@ -32,7 +46,7 @@ const renderCard = (event) => {
 
 // Добавляет месяц в множество
 function getMonth(months, date) {
-    const month = parseInt(date.split('.')[1]); // !!!!!!!!!!!!!!!!!!!
+    const month = Number.parseInt(date.split('.')[1]); // !!!!!!!!!!!!!!!!!!!
 
     switch (month) {
         case 1: return months.set(1, "January");
@@ -92,28 +106,45 @@ const renderCards = (events) => {
     })
 }
 
-// При загрузке страницы создаёт карточки
-window.addEventListener('load', () => {
-    getEvents()
-        .then(events => {
-            fillMonths(events);
-            fillCities(events);
-            renderCards(events);
-        });
-})
+// Полностью очищает контейнер с карточками
+const clearCards = () => {
+    const cards = document.getElementsByClassName('container')[0];
+    while(cards.firstChild)
+        cards.removeChild(cards.firstChild);
+}
+
+// Проверяет, проходит ли событие фильтры
+const isNeededEvent = (event) => {
+    const eventCity = event.city;
+    const eventMonth = Number.parseInt(event.date.split('.')[1]); // !!!!!!!!!!!!!!!!
+    const cityFilter = document.getElementById('cities');
+    const selectedCity = cityFilter.options[cityFilter.selectedIndex].value;
+    const monthFilter = document.getElementById('months');
+    const selectedMonth = monthFilter.options[monthFilter.selectedIndex].value;
+
+    if (eventCity !== selectedCity && selectedCity !== 'All'
+        || eventMonth !== Number.parseInt(selectedMonth) && selectedMonth !== 'All')
+        return false;
+
+    return true;
+}
 
 // Фильтрует карточки
 const filterCards = (events) => {
+    const eventsFiltered = [];
     Object.values(events).map((event) => {
-        
-    })
+        if (isNeededEvent(event))
+            eventsFiltered.push(event);
+    });
+    renderCards(eventsFiltered);
 }
 
 // При изменении значений в селектах берёт карточки и прогоняет их через фильтр
 const filter = () => {
     getEvents()
+        .then((events) => { 
+            clearCards();
+            return events;
+        })
         .then((events) => filterCards(events));
 }
-
-//cities.addEventListener('change', () => filter());
-//months.addEventListener('change', () => filter());
