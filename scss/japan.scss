@@ -18,7 +18,9 @@
 
 $card-maxwidth: 1120px;
 $card-maxheight: 640px;
-$card-padding: 40px 45px 33px 58px;
+$card-padding: 40px 45px 13px 58px;
+
+$footer-margin: 20px;
 $circle-diameter: 448px;
 
 $color-dark: #212121;
@@ -189,6 +191,7 @@ h1 {
 #footer {
   display: flex;
   justify-content: end;
+  margin-top: $footer-margin;
 }
 
 #footer > p {

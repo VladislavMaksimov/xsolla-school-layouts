@@ -77,7 +77,7 @@ h1 {
   height: auto;
   max-height: 640px;
   position: relative;
-  padding: 40px 45px 33px 58px;
+  padding: 40px 45px 13px 58px;
   background: #212121;
   opacity: 0.75;
   border-radius: 10px;
@@ -192,6 +192,7 @@ h1 {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: end;
+  margin-top: 20px;
 }
 
 #footer > p {
