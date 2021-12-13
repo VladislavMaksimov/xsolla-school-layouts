@@ -65,7 +65,7 @@ h1 {
   width: 100%;
   max-width: 1120px;
   height: auto;
-  max-height: 800px;
+  max-height: 640px;
   background: url(/assets/japan.jpg) no-repeat center;
   background-size: cover;
   border-radius: 10px;
@@ -75,9 +75,9 @@ h1 {
   width: 100%;
   max-width: 1120px;
   height: auto;
-  max-height: 800px;
+  max-height: 640px;
   position: relative;
-  padding: 5.6rem 9.2rem 7.2rem 5rem;
+  padding: 40px 45px 30px 58px;
   background: #212121;
   opacity: 0.75;
   border-radius: 10px;
@@ -185,10 +185,27 @@ h1 {
   margin-bottom: 4.4rem;
 }
 
+#footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+
+#footer > p {
+  width: 38.8rem;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.4rem;
+  line-height: 2.3rem;
+}
+
 @media only screen and (max-width: 1200px) {
   #card-background,
   #card {
     max-width: 896px;
-    max-height: 640px;
+    max-height: 512px;
   }
 }

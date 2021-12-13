@@ -1,4 +1,4 @@
-// верстаю для 1200px
+// верстаю для 1280px
 
 @font-face {
   font-family: "Mukta Malar";
@@ -17,7 +17,8 @@
 }
 
 $card-maxwidth: 1120px;
-$card-maxheight: 800px;
+$card-maxheight: 640px;
+$card-padding: 40px 45px 30px 58px;
 $circle-diameter: 448px;
 
 $color-dark: #212121;
@@ -95,7 +96,7 @@ h1 {
 
   position: relative;
 
-  padding: 5.6rem 9.2rem 7.2rem 5rem;
+  padding: $card-padding;
 
   background: $color-dark;
   opacity: 0.75;
@@ -184,6 +185,19 @@ h1 {
   .resource:nth-child(2) {
     margin-bottom: 4.4rem;
   }
+}
+
+#footer {
+  display: flex;
+  justify-content: end;
+}
+
+#footer > p {
+  width: 38.8rem;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.4rem;
+  line-height: 2.3rem;
 }
 
 $card-maxwidth-1200: $card-maxwidth * 0.8;
