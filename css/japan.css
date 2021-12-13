@@ -69,6 +69,7 @@ h1 {
   background: url(/assets/japan.jpg) no-repeat center;
   background-size: cover;
   border-radius: 10px;
+  opacity: 0.75;
 }
 
 #card {
@@ -133,6 +134,7 @@ h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: -1;
 }
 
 #circle {
@@ -140,7 +142,6 @@ h1 {
   height: 448px;
   background: #ff5656;
   mix-blend-mode: screen;
-  opacity: 0.75;
   border-radius: 50%;
 }
 
