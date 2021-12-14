@@ -1,5 +1,3 @@
-// верстаю для 1280px
-
 @font-face {
   font-family: "Mukta Malar";
   src: url(../fonts/MuktaMalar-Light.ttf);
@@ -16,17 +14,19 @@
   font-weight: normal;
 }
 
-$card-maxwidth: 1120px;
-$card-maxheight: 640px;
-$card-padding: 40px 45px 13px 58px;
-
-$footer-margin: 20px;
-$circle-diameter: 448px;
-
+// constants
 $color-dark: #212121;
 $color-white: #fff;
 $color-magenta: #ff5656;
 $color-background: #fff7f7;
+
+// variables
+$card-maxwidth: 1400px;
+$card-maxheight: 800px;
+$card-padding: 56px 92px 72px 100px;
+
+$footer-margin: 50px;
+$circle-diameter: 560px;
 
 @mixin center-margin {
   margin-left: auto;
@@ -202,14 +202,94 @@ h1 {
   line-height: 2.3rem;
 }
 
-$card-maxwidth-1200: $card-maxwidth * 0.8;
-$card-maxheight-1200: $card-maxheight * 0.8;
-$circle-diameter-1200: $circle-diameter * 0.8;
+// 1600px and lower screens
+$card-maxwidth-1600: $card-maxwidth * 0.8;
+$card-maxheight-1600: $card-maxheight * 0.8;
+$card-padding-1600: 40px 45px 13px 58px;
 
-@media only screen and (max-width: 1200px) {
+$footer-margin-1600: 20px;
+$circle-diameter-1600: $circle-diameter * 0.8;
+
+@media only screen and (max-width: 1600px) {
   #card-background,
   #card {
-    max-width: $card-maxwidth-1200;
-    max-height: $card-maxheight-1200;
+    max-width: $card-maxwidth-1600;
+    max-height: $card-maxheight-1600;
+  }
+
+  #card {
+    padding: $card-padding-1600;
+  }
+
+  #footer {
+    margin-top: $footer-margin-1600;
+  }
+
+  #circle {
+    width: $circle-diameter-1600;
+    height: $circle-diameter-1600;
+  }
+}
+
+// 1280 and lower screens
+$card-maxwidth-1280: $card-maxwidth * 0.64;
+$card-maxheight-1280: $card-maxheight * 0.64;
+$card-padding-1280: 36px 59px 26px 64px;
+
+$footer-margin-1280: 15px;
+$circle-diameter-1280: $circle-diameter * 0.64;
+
+@media only screen and (max-width: 1280px) {
+  html {
+    font-size: 8px;
+  }
+
+  #card-background,
+  #card {
+    max-width: $card-maxwidth-1280;
+    max-height: $card-maxheight-1280;
+  }
+
+  #card {
+    padding: $card-padding-1280;
+  }
+
+  #footer {
+    margin-top: $footer-margin-1280;
+  }
+
+  #circle {
+    width: $circle-diameter-1280;
+    height: $circle-diameter-1280;
+  }
+}
+
+// 768px and lower screens
+$circle-diameter-768: $circle-diameter / 2;
+
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 10px;
+  }
+
+  #card-background,
+  #card {
+    border-radius: 0;
+  }
+
+  #card {
+    padding: 20px;
+  }
+
+  #footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-top: 0;
+  }
+
+  #circle {
+    width: $circle-diameter-768;
+    height: $circle-diameter-768;
   }
 }

@@ -63,9 +63,9 @@ h1 {
 
 #card-background {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1400px;
   height: auto;
-  max-height: 640px;
+  max-height: 800px;
   background: url(/assets/japan.jpg) no-repeat center;
   background-size: cover;
   border-radius: 10px;
@@ -73,11 +73,11 @@ h1 {
 
 #card {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1400px;
   height: auto;
-  max-height: 640px;
+  max-height: 800px;
   position: relative;
-  padding: 40px 45px 13px 58px;
+  padding: 56px 92px 72px 100px;
   background: #212121;
   opacity: 0.75;
   border-radius: 10px;
@@ -137,8 +137,8 @@ h1 {
 }
 
 #circle {
-  width: 448px;
-  height: 448px;
+  width: 560px;
+  height: 560px;
   background: #ff5656;
   mix-blend-mode: screen;
   border-radius: 50%;
@@ -192,7 +192,7 @@ h1 {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: end;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 #footer > p {
@@ -203,10 +203,64 @@ h1 {
   line-height: 2.3rem;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1600px) {
+  #card-background,
+  #card {
+    max-width: 1120px;
+    max-height: 640px;
+  }
+  #card {
+    padding: 40px 45px 13px 58px;
+  }
+  #footer {
+    margin-top: 20px;
+  }
+  #circle {
+    width: 448px;
+    height: 448px;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  html {
+    font-size: 8px;
+  }
   #card-background,
   #card {
     max-width: 896px;
     max-height: 512px;
+  }
+  #card {
+    padding: 36px 59px 26px 64px;
+  }
+  #footer {
+    margin-top: 15px;
+  }
+  #circle {
+    width: 358.4px;
+    height: 358.4px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 10px;
+  }
+  #card-background,
+  #card {
+    border-radius: 0;
+  }
+  #card {
+    padding: 20px;
+  }
+  #footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-top: 0;
+  }
+  #circle {
+    width: 280px;
+    height: 280px;
   }
 }
