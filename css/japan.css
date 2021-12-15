@@ -88,7 +88,7 @@ h1 {
   max-width: 1400px;
   height: auto;
   max-height: 800px;
-  background: url(/assets/japan.jpg) no-repeat center;
+  background: url(../assets/japan.jpg) no-repeat center;
   background-size: cover;
   border-radius: 10px;
 }
