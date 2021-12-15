@@ -41,7 +41,9 @@ $circle-diameter: 560px;
 
 @mixin fullpage-size {
   height: 100%;
+  min-height: 100vh;
   width: 100%;
+  min-width: 100vw;
 }
 
 * {
@@ -178,8 +180,12 @@ h1 {
   }
 }
 
+.resources-menu {
+  display: flex;
+  align-items: center;
+}
+
 .resources {
-  margin-top: 116px;
   list-style-type: none;
 
   .resource:nth-child(1),
