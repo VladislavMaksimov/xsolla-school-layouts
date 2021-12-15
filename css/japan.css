@@ -8,10 +8,26 @@
 
 @font-face {
   font-family: "Mukta Malar";
-  src: url(../fonts/MuktaMalar-Light.ttf);
+  src: url(../fonts/MuktaMalar-Regular.ttf);
   font-stretch: normal;
   font-style: normal;
   font-weight: normal;
+}
+
+@font-face {
+  font-family: "Mukta Malar";
+  src: url(../fonts/MuktaMalar-SemiBold.ttf);
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Mukta Malar";
+  src: url(../fonts/MuktaMalar-ExtraBold.ttf);
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 800;
 }
 
 * {
