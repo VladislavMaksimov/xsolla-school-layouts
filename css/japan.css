@@ -1,23 +1,77 @@
+@font-face {
+  font-family: "Mukta Malar";
+  src: url(../fonts/MuktaMalar-Light.ttf);
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Mukta Malar";
+  src: url(../fonts/MuktaMalar-Regular.ttf);
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Mukta Malar";
+  src: url(../fonts/MuktaMalar-SemiBold.ttf);
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Mukta Malar";
+  src: url(../fonts/MuktaMalar-ExtraBold.ttf);
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 800;
+}
+
 * {
   margin: 0;
   padding: 0;
-  font-family: Mukta Malar, Arial, Helvetica, sans-serif;
-  color: #FFFFFF;
+  font-family: "Mukta Malar", Arial, Helvetica, sans-serif;
+  color: #fff;
 }
 
 html {
   font-size: 10px;
   height: 100%;
-}
-
-body, div, p {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  min-height: 100vh;
+  width: 100%;
+  min-width: 100vw;
 }
 
 body {
   height: 100%;
-  background: #FFF7F7;
+  min-height: 100vh;
+  width: 100%;
+  min-width: 100vw;
+}
+
+body,
+div,
+p {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3.7rem;
+  line-height: 6rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+#japan-page {
+  background: #fff7f7;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  min-width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29,11 +83,40 @@ body {
           align-items: center;
 }
 
-h1 {
-  font-size: 3.7rem;
-  line-height: 6rem;
-  font-style: normal;
-  font-weight: 800;
+#card-background {
+  width: 100%;
+  max-width: 1400px;
+  height: auto;
+  max-height: 800px;
+  background: url(../assets/japan.jpg) no-repeat center;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+#card {
+  width: 100%;
+  max-width: 1400px;
+  height: auto;
+  max-height: 800px;
+  position: relative;
+  padding: 56px 92px 72px 100px;
+  background: #212121;
+  opacity: 0.75;
+  border-radius: 10px;
+  -webkit-filter: drop-shadow(0px 24px 48px rgba(0, 0, 0, 0.1));
+          filter: drop-shadow(0px 24px 48px rgba(0, 0, 0, 0.1));
+}
+
+#header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
 }
 
 .menu-item {
@@ -42,6 +125,8 @@ h1 {
   font-size: 2.4rem;
   line-height: 4rem;
   text-align: end;
+  position: relative;
+  bottom: 12px;
 }
 
 .menu-item:nth-child(2) {
@@ -53,28 +138,6 @@ h1 {
 
 .menu-item:nth-last-child(1) {
   margin-right: 1rem;
-}
-
-#card-background {
-  width: 110rem;
-  height: 62.9rem;
-  background: url(/assets/japan.jpg) no-repeat center;
-  background-size: cover;
-  border-radius: 10px;
-  z-index: -1;
-}
-
-#card {
-  position: relative;
-  width: 110rem;
-  height: 62.9rem;
-  padding: 5.6rem 9.2rem 7.2rem 9.7rem;
-  background: #212121;
-  opacity: 0.75;
-  border-radius: 10px;
-  -webkit-filter: drop-shadow(0px 24px 48px rgba(0, 0, 0, 0.1));
-          filter: drop-shadow(0px 24px 48px rgba(0, 0, 0, 0.1));
-  z-index: 1;
 }
 
 #circle-layer {
@@ -92,26 +155,15 @@ h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  z-index: 2;
+  z-index: -1;
 }
 
 #circle {
-  width: 44rem;
-  height: 44rem;
-  background: #FF5656;
+  width: 560px;
+  height: 560px;
+  background: #ff5656;
   mix-blend-mode: screen;
-  opacity: 0.75;
   border-radius: 50%;
-  z-index: 2;
-}
-
-#header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 #main {
@@ -145,11 +197,100 @@ h1 {
   line-height: 6rem;
 }
 
+.resources-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .resources {
-  margin-top: 11.6rem;
   list-style-type: none;
 }
 
-.resources .resource:nth-child(1), .resources .resource:nth-child(2) {
-  margin-bottom: 4.4rem;
+.resources .resource:nth-child(1),
+.resources .resource:nth-child(2) {
+  margin-bottom: 44px;
+}
+
+#footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  margin-top: 50px;
+}
+
+#footer > p {
+  width: 38.8rem;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.4rem;
+  line-height: 2.3rem;
+}
+
+@media only screen and (max-width: 1600px) {
+  #card-background,
+  #card {
+    max-width: 1120px;
+    max-height: 640px;
+  }
+  #card {
+    padding: 40px 45px 13px 58px;
+  }
+  #footer {
+    margin-top: 20px;
+  }
+  #circle {
+    width: 448px;
+    height: 448px;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  html {
+    font-size: 8px;
+  }
+  #card-background,
+  #card {
+    max-width: 896px;
+    max-height: 512px;
+  }
+  #card {
+    padding: 36px 59px 26px 64px;
+  }
+  #footer {
+    margin-top: 15px;
+  }
+  #circle {
+    width: 358.4px;
+    height: 358.4px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 10px;
+  }
+  #card-background,
+  #card {
+    border-radius: 0;
+  }
+  #card {
+    padding: 20px;
+  }
+  #footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-top: 0;
+  }
+  #circle {
+    width: 280px;
+    height: 280px;
+  }
 }
